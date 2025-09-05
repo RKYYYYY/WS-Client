@@ -24,7 +24,7 @@ function App() {
             borderRadius: "12px",
             border: "solid 1px oklch(35.89% 0.0349 253.6)",
           },
-          duration: 2000,
+          duration: 3500,
           success: {
             color: "oklch(81.25% 0.1884 154.7)",
             borderRadius: "12px",
@@ -33,6 +33,7 @@ function App() {
               primary: "oklch(74.05% 0.1848 153.1 / 50%)",
               secondary: "oklch(81.25% 0.1884 154.7)",
             },
+            loading: false,
           },
           error: {
             color: "oklch(61.03% 0.1947 28.6)",
@@ -42,6 +43,7 @@ function App() {
               primary: "oklch(54.18% 0.1937 29.4 / 50%)",
               secondary: "oklch(61.03% 0.1947 28.6)",
             },
+            loading: false,
           },
         }}
       />
