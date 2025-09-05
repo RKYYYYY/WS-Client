@@ -1,4 +1,4 @@
-import { BASE_URL } from "../utils/url"; // import de l'url centralisé pour faciliter les changements d'environnement
+const BASE_URL = import.meta.env.VITE_SERVER_URL; // import de l'url centralisé pour faciliter les changements d'environnement
 
 export async function signUp(values) {
   // ↑ function pour l'inscription
