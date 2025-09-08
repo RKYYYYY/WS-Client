@@ -57,8 +57,8 @@ export default function Login() {
   }
 
   return (
-    <div className="w-full flex-col max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 sm:p-6 font-schibsted-grotesk text-secondary-100 flex justify-center items-center">
-      <h1 className="text-primary-400 text-3xl sm:text-5xl font-extrabold mb-24">
+    <div className="w-full flex-col max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 sm:p-6 font-schibsted-grotesk text-secondary-100 flex items-center">
+      <h1 className="text-primary-400 text-3xl sm:text-5xl font-extrabold mb-30 mt-10">
         Log to my account
       </h1>
       <form
@@ -66,7 +66,7 @@ export default function Login() {
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col mb-2">
-          <label htmlFor="data" className="mb-2">
+          <label htmlFor="data" className="mb-2 text-base lg:text-lg">
             Username or E-mail
           </label>
           <input
@@ -74,12 +74,16 @@ export default function Login() {
             type="text"
             id="data"
             placeholder="Enter your username or e-mail"
-            className="border border-secondary-800 rounded-xl px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
-          {errors.data && <p className="text-red-400">{errors.data.message}</p>}
+          {errors.data && (
+            <p className="text-red-400 text-base lg:text-lg mt-1">
+              {errors.data.message}
+            </p>
+          )}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="password" className="mb-2">
+          <label htmlFor="password" className="mb-2 text-base lg:text-lg">
             Password
           </label>
           <input
@@ -87,16 +91,18 @@ export default function Login() {
             type="password"
             id="password"
             placeholder="Enter your password"
-            className="border border-secondary-800 rounded-xl px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.password && (
-            <p className="text-red-400">{errors.password.message}</p>
+            <p className="text-red-400 text-base lg:text-lg mt-1">
+              {errors.password.message}
+            </p>
           )}
         </div>
         <Button colorVariant="btnPrimary" text="Login" type="submit" />
       </form>
       <div className="flex flex-col gap-3">
-        <p className="sm:text-base text-sm">I want an account</p>
+        <p className="text-base lg:text-lg">I want an account</p>
         <Button colorVariant="btnSecondary" text="Sign up" to="/register" />
       </div>
     </div>

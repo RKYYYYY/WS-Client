@@ -6,10 +6,10 @@ import { AuthProvider } from "./context/AuthContext";
 
 function App() {
   return (
-    <div className="bg-secondary-900 min-h-screen flex flex-col items-center justify-center">
+    <div className="bg-secondary-900 min-h-screen flex flex-col ">
       <AuthProvider>
         <Header />
-        <main className="flex-1 flex items-center justify-center">
+        <main className="flex-1 flex justify-center">
           <Outlet />
         </main>
         <Footer />

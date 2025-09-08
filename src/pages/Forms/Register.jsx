@@ -78,8 +78,8 @@ export default function Register() {
     }
   }
   return (
-    <div className="w-full flex-col max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 sm:p-6 font-schibsted-grotesk text-secondary-100 flex justify-center items-center">
-      <h1 className="text-primary-400 text-3xl sm:text-5xl font-extrabold mb-24">
+    <div className="w-full flex-col max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 sm:p-6 font-schibsted-grotesk text-secondary-100 flex items-center">
+      <h1 className="text-primary-400 text-3xl sm:text-5xl font-extrabold mb-10 mt-10">
         Create an account
       </h1>
       <form
@@ -87,7 +87,7 @@ export default function Register() {
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col mb-2">
-          <label htmlFor="username" className="mb-2 text-sm sm:text-base">
+          <label htmlFor="username" className="mb-2 text-base lg:text-lg">
             Username <span className="text-red-400">*</span>
           </label>
           <input
@@ -95,16 +95,16 @@ export default function Register() {
             type="text"
             id="username"
             placeholder="Enter your username"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.username && (
-            <p className="text-red-400 text-xs sm:text-sm mt-1">
+            <p className="text-red-400 text-base lg:text-lg mt-1">
               {errors.username.message}
             </p>
           )}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="email" className="mb-2 text-sm sm:text-base">
+          <label htmlFor="email" className="mb-2 text-base lg:text-lg">
             E-mail <span className="text-red-400">*</span>
           </label>
           <input
@@ -112,16 +112,16 @@ export default function Register() {
             type="email"
             id="email"
             placeholder="Enter your e-mail"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.email && (
-            <p className="text-red-400 text-xs sm:text-sm mt-1">
+            <p className="text-red-400 text-base lg:text-lg mt-1">
               {errors.email.message}
             </p>
           )}
         </div>
         <div className="flex flex-col mb-2">
-          <label htmlFor="password" className="mb-2 text-sm sm:text-base">
+          <label htmlFor="password" className="mb-2 text-base lg:text-lg">
             Password <span className="text-red-400">*</span>
           </label>
           <input
@@ -129,10 +129,10 @@ export default function Register() {
             type="password"
             id="password"
             placeholder="Enter your password"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.password && (
-            <p className="text-red-400 text-xs sm:text-sm mt-1">
+            <p className="text-red-400 text-base lg:text-lg mt-1">
               {errors.password.message}
             </p>
           )}
@@ -140,7 +140,7 @@ export default function Register() {
         <div className="flex flex-col mb-2">
           <label
             htmlFor="confirmPassword"
-            className="mb-2 text-sm sm:text-base"
+            className="mb-2 text-base lg:text-lg"
           >
             Confirm password <span className="text-red-400">*</span>
           </label>
@@ -149,10 +149,10 @@ export default function Register() {
             type="password"
             id="confirmPassword"
             placeholder="Confirm your password"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.confirmPassword && (
-            <p className="text-red-400 text-xs sm:text-sm mt-1">
+            <p className="text-red-400 text-base lg:text-lg mt-1">
               {errors.confirmPassword.message}
             </p>
           )}
@@ -160,7 +160,7 @@ export default function Register() {
         <div className="flex flex-col mb-2">
           <label
             htmlFor="rgpd"
-            className="mb-2 text-sm sm:text-base flex items-start"
+            className="mb-2 text-base lg:text-lg flex items-start"
           >
             <input
               {...register("rgpd")}
@@ -174,7 +174,7 @@ export default function Register() {
             </span>
           </label>
           {errors.rgpd && (
-            <p className="text-red-400 text-xs sm:text-sm mt-1">
+            <p className="text-red-400 text-base lg:text-lg mt-1">
               {errors.rgpd.message}
             </p>
           )}
@@ -182,7 +182,7 @@ export default function Register() {
         <Button colorVariant="btnPrimary" text="Sign up" type="submit" />
       </form>
       <div className="flex flex-col gap-3">
-        <p className="sm:text-base text-sm">I already have an account</p>
+        <p className="text-base lg:text-lg">I already have an account</p>
         <Button colorVariant="btnSecondary" text="Login" to="/login" />
       </div>
     </div>
