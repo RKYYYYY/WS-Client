@@ -99,11 +99,15 @@ export default function Login() {
             </p>
           )}
         </div>
-        <Button colorVariant="btnPrimary" text="Login" type="submit" />
+        <Button colorVariant="btnPrimaryYellow" text="Login" type="submit" />
       </form>
       <div className="flex flex-col gap-3">
         <p className="text-base lg:text-lg">I want an account</p>
-        <Button colorVariant="btnSecondary" text="Sign up" to="/register" />
+        <Button
+          colorVariant="btnSecondaryYellow"
+          text="Sign up"
+          to="/register"
+        />
       </div>
     </div>
   );

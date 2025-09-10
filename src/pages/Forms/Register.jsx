@@ -179,11 +179,11 @@ export default function Register() {
             </p>
           )}
         </div>
-        <Button colorVariant="btnPrimary" text="Sign up" type="submit" />
+        <Button colorVariant="btnPrimaryYellow" text="Sign up" type="submit" />
       </form>
       <div className="flex flex-col gap-3">
         <p className="text-base lg:text-lg">I already have an account</p>
-        <Button colorVariant="btnSecondary" text="Login" to="/login" />
+        <Button colorVariant="btnSecondaryYellow" text="Login" to="/login" />
       </div>
     </div>
   );
