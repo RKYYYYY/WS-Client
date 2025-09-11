@@ -1,21 +1,13 @@
-import saved1 from "./saved-1.png";
-
-export const Frame = () => {
+export default function HomeCard({ placeholder, ...props }) {
+  // ↑ componant des cards de la homepage
   return (
-    <div className="flex flex-col w-[380px] items-end relative">
-      <div className="relative self-stretch w-full h-60 bg-secondarysecondary-800 rounded-2xl border border-solid border-secondarysecondary-700" />
-
-      <div className="flex w-[380px] items-center justify-center gap-2.5 p-2.5 absolute top-0 left-0">
-        <p className="">
-          You can save your friends settings to try them easily.
-        </p>
-      </div>
-
+    <div className="bg-linear-to-tr from-secondary-800 from-50% to-secondary-700 border border-secondary-700 rounded-2xl relative overflow-hidden min-h-70 px-2.5 pt-2.5">
+      <h3 className="text-lg text-secondary-100 mb-3">{placeholder}</h3>
       <img
-        className="absolute w-[292px] h-[191px] top-[49px] left-8 aspect-[0.97] object-cover"
-        alt=""
-        src=""
+        src="src/assets/images/Saved.png"
+        alt="blblblbl"
+        className=" h-auto w-full absolute px-12"
       />
     </div>
   );
-};
+}
