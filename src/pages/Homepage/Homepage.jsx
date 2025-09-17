@@ -8,7 +8,7 @@ export default function Homepage() {
         <h1 className="font-schibsted-grotesk text-secondary-100 font-extrabold text-3xl mt-10 mb-10 text-center">
           You are <span className="text-red-400">bad</span>? You want to
           progress
-          <span className="text-green-400">successful</span> in your
+          <span className="text-green-400"> successful</span> in your
           Counter-Strike games ?
         </h1>
         <div className="mb-3">

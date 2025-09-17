@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Homepage from "./pages/Homepage/Homepage";
 import Saved from "./pages/Saved";
-import Discorver from "./pages/Discorver";
+import Discover from "./pages/Discover";
 import Register from "./pages/Forms/Register";
 import Login from "./pages/Forms/Login";
 import ErrorPage from "./pages/ErrorPage";
@@ -27,7 +27,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/discover",
-        element: <Discorver />,
+        element: <Discover />,
       },
       {
         path: "/register",
