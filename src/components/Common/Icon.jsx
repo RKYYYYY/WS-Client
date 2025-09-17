@@ -1,22 +1,53 @@
-import { useEffect, useState } from "react";
+import Bookmark from "../../assets/svgs/bookmark";
+import Camera from "../../assets/svgs/camera";
+import Check from "../../assets/svgs/check";
+import Cross from "../../assets/svgs/cross";
+import Crosshair from "../../assets/svgs/crosshair";
+import Dashboard from "../../assets/svgs/dashboard";
+import DesktopWindows from "../../assets/svgs/desktop_windows";
+import Explore from "../../assets/svgs/explore";
+import Eye from "../../assets/svgs/eye";
+import FileCopy from "../../assets/svgs/file_copy";
+import Home from "../../assets/svgs/home";
+import Mouse from "../../assets/svgs/mouse";
+import Placeholder from "../../assets/svgs/placeholder";
 
-const GIST_BASE =
-  "https://gist.githubusercontent.com/RKYYYYY/f20d4b228f31c7eb4662dae1f5a434dd/raw"; // url du github Gist qui contient les icon svg, permet de les récup dynamiquement
-export default function Icon({ name, className }) {
-  // ↑ component qui prendre 2 props
-  const [svg, setSvg] = useState(""); // stock le contenu SVG récup
+const iconRegistry = {
+  bookmark: Bookmark,
+  camera: Camera,
+  check: Check,
+  cross: Cross,
+  crosshair: Crosshair,
+  dashboard: Dashboard,
+  desktopWindows: DesktopWindows,
+  explore: Explore,
+  eye: Eye,
+  fileCopy: FileCopy,
+  home: Home,
+  mouse: Mouse,
+  placeholder: Placeholder,
+};
 
-  useEffect(() => {
-    fetch(`${GIST_BASE}/${name}.svg`) // dl le fichier svg depuis le gist
-      .then((res) => res.text()) // convertit la rép en texte brut (code svg)
-      .then(setSvg); // stocke le contenue svg dans le useState
-  }, [name]);
+export default function Icon({
+  name,
+  size = 24,
+  className = "",
+  fallback = null,
+  ...props
+}) {
+  const IconComponent = iconRegistry[name];
 
-  // injecter className dans la balise <svg>
-  const svgWithClass = svg.replace(
-    /<svg([^>]*)>/,
-    `<svg$1 class="${className}">` // regex qui trouve la balise <svg> et y ajoute les classes css
-  );
+  // Si l'icône n'existe pas, retourner le fallback ou null
+  if (!IconComponent) {
+    if (fallback) {
+      return fallback;
+    }
+    console.warn(`Icon "${name}" not found in registry`);
+    return null;
+  }
 
-  return <span dangerouslySetInnerHTML={{ __html: svgWithClass }} />; // injecte le code svg direct dans le DOM (equivalent InnerHTML en react)
+  return <IconComponent size={size} className={className} {...props} />;
 }
+
+// Export du registre pour debugging ou extensions
+export { iconRegistry };
