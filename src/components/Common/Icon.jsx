@@ -11,6 +11,10 @@ import FileCopy from "../../assets/svgs/file_copy";
 import Home from "../../assets/svgs/home";
 import Mouse from "../../assets/svgs/mouse";
 import Placeholder from "../../assets/svgs/placeholder";
+import ArrowUp from "../../assets/svgs/arrow_up";
+import ArrowDown from "../../assets/svgs/arrow_down";
+import ArrowLeft from "../../assets/svgs/arrow_left";
+import ArrowRight from "../../assets/svgs/arrow_right";
 
 const iconRegistry = {
   bookmark: Bookmark,
@@ -26,6 +30,10 @@ const iconRegistry = {
   home: Home,
   mouse: Mouse,
   placeholder: Placeholder,
+  arrowUp: ArrowUp,
+  arrowDown: ArrowDown,
+  arrowLeft: ArrowLeft,
+  arrowRight: ArrowRight,
 };
 
 export default function Icon({

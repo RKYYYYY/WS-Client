@@ -9,6 +9,7 @@ import ErrorPage from "./pages/ErrorPage";
 import { rootLoader } from "./loaders/rootLoader";
 import UserNotConnected from "./components/ProtectedRoutes/UserNotConnected";
 import UserConnected from "./components/ProtectedRoutes/UserConnected";
+import ProfileSettings from "./pages/Profile/ProfileSettings";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +24,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/saved",
-        element: <Saved />,
+        element: (
+          <UserConnected>
+            <Saved />,
+          </UserConnected>
+        ),
       },
       {
         path: "/discover",
@@ -43,6 +48,14 @@ export const router = createBrowserRouter([
           <UserNotConnected>
             <Login />
           </UserNotConnected>
+        ),
+      },
+      {
+        path: "/profile-settings",
+        element: (
+          <UserConnected>
+            <ProfileSettings />
+          </UserConnected>
         ),
       },
     ],

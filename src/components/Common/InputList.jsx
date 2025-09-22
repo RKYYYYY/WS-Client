@@ -7,6 +7,16 @@ export default function SelectInputComponent({
   onChange,
   placeholder = "Sélectionnez une option",
 }) {
+  // initialiser avec la première option si elle est dispo
+  const getInitialValue = () => {
+    if (value) return value; // si une valeur est fournie par le parent
+    if (options.length > 0) {
+      // retourne la 1ère option
+      return typeof options[0] === "object" ? options[0].value : options[0];
+    }
+    return "";
+  };
+
   const [localValue, setLocalValue] = useState(value || "");
 
   const handleChange = (e) => {
@@ -27,9 +37,7 @@ export default function SelectInputComponent({
         onChange={handleChange}
         className="border border-secondary-700 bg-secondary-800 rounded-xl px-3 py-2.5 text-secondary-200 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
       >
-        <option value="" disabled>
-          {placeholder}
-        </option>
+        {placeholder}
 
         {options.map((option, index) => (
           <option

@@ -3,7 +3,7 @@ const BASE_URL = import.meta.env.VITE_SERVER_URL; // import de l'url centralisé
 export async function signUp(values) {
   // ↑ function pour l'inscription
   try {
-    const response = await fetch(`${BASE_URL}/user`, {
+    const response = await fetch(`${BASE_URL}user`, {
       // ↑ appel vers l'endpoint d'inscription
       method: "POST", // metohde POST pour créer un nouveau user
       body: JSON.stringify(values), // convertit l'obj js en json
@@ -21,11 +21,11 @@ export async function signUp(values) {
 export async function signIn(values) {
   // ↑ function pour la connection
   try {
-    const response = await fetch(`${BASE_URL}/user/login`, {
+    const response = await fetch(`${BASE_URL}user/login`, {
       method: "POST",
       body: JSON.stringify(values),
       headers: {
-        "Content-type": "application/json",
+        "Content-Type": "application/json",
       },
       credentials: "include",
     });
@@ -38,7 +38,7 @@ export async function signIn(values) {
 
 export async function getCurrentUser() {
   try {
-    const response = await fetch(`${BASE_URL}/user/current`, {
+    const response = await fetch(`${BASE_URL}user/current`, {
       method: "GET",
       credentials: "include",
     });
@@ -53,8 +53,24 @@ export async function getCurrentUser() {
 }
 
 export async function signOut() {
-  await fetch(`${BASE_URL}/user/deleteToken`, {
+  await fetch(`${BASE_URL}user/deleteToken`, {
     method: "DELETE",
     credentials: "include",
   });
 }
+
+export const updateUserProfile = async (data) => {
+  try {
+    const response = await fetch(`${BASE_URL}user/profile-settings`, {
+      method: "PUT",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    });
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+  }
+};

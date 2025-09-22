@@ -15,6 +15,12 @@ export default function Header() {
         {userConnected ? ( // si l'user est connecté ça affiche
           <>
             <NavLink
+              to="/profile-settings"
+              className="text-secondary-100 hover:text-secondary-200 font-semibold"
+            >
+              Profile Settings
+            </NavLink>
+            <NavLink
               to="/saved"
               className="text-secondary-100 hover:text-secondary-200 font-semibold"
             >
