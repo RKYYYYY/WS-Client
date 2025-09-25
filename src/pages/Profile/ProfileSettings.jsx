@@ -6,6 +6,7 @@ import { updateUserProfile } from "../../api/auth.api";
 import defaultAvatar from "../../assets/images/defaultAvatar.webp";
 import Icon from "../../components/Common/Icon";
 import Button from "../../components/Common/Button";
+import toast from "react-hot-toast";
 
 export default function ProfileSettings() {
   const { userConnected } = useAuth();
@@ -25,8 +26,6 @@ export default function ProfileSettings() {
 
   // feedbacks
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
 
   const processFile = (file) => {
@@ -34,14 +33,14 @@ export default function ProfileSettings() {
 
     if (!file) return;
     if (!file.type.startsWith("image/")) {
-      setError("Please, select an image");
+      toast.error("Please, select an image");
       return;
     }
 
     const maxSize = 5 * 1024 * 1024;
 
     if (file.size > maxSize) {
-      setError("Image too heavy (5Mo max)");
+      toast.error("Image too heavy (5Mo max)");
       return;
     }
 
@@ -95,11 +94,8 @@ export default function ProfileSettings() {
   };
 
   const submit = async () => {
-    setError(null);
-    setSuccess(null);
-
     if (!canSubmit) {
-      setError("No change saved");
+      toast.error("No change saved");
       return;
     }
 
@@ -130,16 +126,17 @@ export default function ProfileSettings() {
       const updatedUser = await updateUserProfile(payload);
 
       if (!updatedUser.message) {
-        setSuccess("Profile updated");
+        toast.success("Profile updated");
         setCurrentPassword("");
         setNewPassword("");
         setConfirmPassword("");
         setShowPasswordForm(false);
       } else {
-        setError(updatedUser.message);
+        toast.error(updatedUser.message);
       }
     } catch (error) {
       console.log(error);
+      toast.error("An error occurred while update profile");
     } finally {
       setLoading(false);
     }
@@ -240,7 +237,7 @@ export default function ProfileSettings() {
           {showPasswordForm && (
             <div className="mt-2 p-3 rounded-xl bg-secondary-800">
               <div className="flex flex-col mb-2">
-                <label className="mb-2 text-base lg:text-lg font-semibold text-secondary-00">
+                <label className="mb-2 text-base lg:text-lg font-semibold text-secondary-200">
                   Current Password <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -252,7 +249,7 @@ export default function ProfileSettings() {
                 />
               </div>
               <div className="flex flex-col mb-2">
-                <label className="mb-2 text-base lg:text-lg font-semibold">
+                <label className="mb-2 text-base lg:text-lg font-semibold text-secondary-200">
                   New password <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -264,7 +261,7 @@ export default function ProfileSettings() {
                 />
               </div>
               <div className="flex flex-col mb-2">
-                <label className="mb-2 text-base lg:text-lg font-semibold">
+                <label className="mb-2 text-base lg:text-lg font-semibold text-secondary-200">
                   Confirm new password <span className="text-red-400">*</span>
                 </label>
                 <input
@@ -283,13 +280,6 @@ export default function ProfileSettings() {
             </div>
           )}
         </div>
-
-        {error && (
-          <p className="text-red-400 text-base lg:text-lg mt-1">{error}</p>
-        )}
-        {success && (
-          <p className="text-green-400 text-base lg:text-lg mt-1">{success}</p>
-        )}
 
         <Button
           colorVariant="btnPrimaryYellow"

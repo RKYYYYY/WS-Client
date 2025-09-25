@@ -24,7 +24,7 @@ function App() {
             borderRadius: "12px",
             border: "solid 1px oklch(35.89% 0.0349 253.6)",
           },
-          duration: 3500,
+          duration: 2000,
           success: {
             color: "oklch(81.25% 0.1884 154.7)",
             borderRadius: "12px",
