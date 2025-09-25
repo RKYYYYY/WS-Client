@@ -83,7 +83,7 @@ export default function Register() {
         Create an account
       </h1>
       <form
-        className="flex flex-col gap-2 mb-6 mx-auto w-full min-w-0 sm:min-w-[400px] md:min-w-[500px] lg:min-w-[600px] border border-secondary-700 rounded-[16px] py-3 sm:py-7 px-3 sm:px-7"
+        className="flex flex-col gap-2 mb-6 mx-auto w-full min-w-0 sm:min-w-[400px] md:min-w-[500px] lg:min-w-[600px] border border-secondary-700 rounded-2xl py-3 sm:py-7 px-3 sm:px-7"
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col mb-2">
@@ -95,7 +95,7 @@ export default function Register() {
             type="text"
             id="username"
             placeholder="Enter your username"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-xl px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.username && (
             <p className="text-red-400 text-base lg:text-lg mt-1">
@@ -112,7 +112,7 @@ export default function Register() {
             type="email"
             id="email"
             placeholder="Enter your e-mail"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-xl px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.email && (
             <p className="text-red-400 text-base lg:text-lg mt-1">
@@ -129,7 +129,7 @@ export default function Register() {
             type="password"
             id="password"
             placeholder="Enter your password"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-xl px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.password && (
             <p className="text-red-400 text-base lg:text-lg mt-1">
@@ -149,7 +149,7 @@ export default function Register() {
             type="password"
             id="confirmPassword"
             placeholder="Confirm your password"
-            className="border border-secondary-800 rounded-[12px] px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
+            className="border border-secondary-800 rounded-xl px-3 py-2 text-base lg:text-lg focus:outline-none focus:ring-2 focus:ring-primary-400"
           />
           {errors.confirmPassword && (
             <p className="text-red-400 text-base lg:text-lg mt-1">

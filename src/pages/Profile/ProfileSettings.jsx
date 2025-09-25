@@ -5,6 +5,7 @@ import { updateUserProfile } from "../../api/auth.api";
 
 import defaultAvatar from "../../assets/images/defaultAvatar.webp";
 import Icon from "../../components/Common/Icon";
+import Button from "../../components/Common/Button";
 
 export default function ProfileSettings() {
   const { userConnected } = useAuth();
@@ -145,145 +146,157 @@ export default function ProfileSettings() {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-2xl">
-      <h1 className="text-2xl font-bold mb-6">Mon profil</h1>
-
-      <div className="mb-6">
-        <label className="block text-sm font-semibold text-gray-700 mb-2">
-          Avatar
-        </label>
-
-        <div className="flex justify-center mb-4">
-          <img
-            src={preview}
-            alt="Avatar"
-            className="w-32 h-32 rounded-full object-cover shadow-md"
-          />
-        </div>
-
-        <button
-          className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer ${
-            dragActive
-              ? "border-blue-500 bg-blue-50"
-              : "border-gray-300 bg-gray-50"
-          }`}
-          onClick={() => fileInputRef.current?.click()}
-          onDragEnter={handleDrag}
-          onDragLeave={handleDrag}
-          onDragOver={handleDrag}
-          onDrop={handleDrop}
-        >
-          <p className="text-gray-600">Glissez une image ou cliquez ici</p>
-
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-            className="hidden"
-          />
-        </button>
-
-        <div className="my-4">
-          <label className="block text-sm font-semibold text-gray-700 mb-2">
-            Email
+    <div className="w-full flex-col max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl p-4 sm:p-6 font-schibsted-grotesk text-secondary-100 flex items-center">
+      <h1 className="text-primary-400 text-3xl sm:text-5xl font-extrabold mb-10 mt-10 sm:whitespace-nowrap text-center">
+        Modify my account settings
+      </h1>
+      <div className="flex flex-col gap-2 mb-6 mx-auto w-full min-w-0 sm:min-w-[400px] md:min-w-[500px] lg:min-w-[600px] border border-secondary-700 rounded-2xl py-3 sm:py-7 px-3 sm:px-7">
+        <div className="flex flex-col mb-20">
+          <label className="mb-10 text-base lg:text-lg font-semibold text-primary-400">
+            Avatar
           </label>
 
+          {/* Image */}
+          <div className="flex justify-center">
+            <div
+              className={`relative w-32 h-32 rounded-full overflow-hidden cursor-pointer group ${
+                dragActive ? "ring-3 ring-primary-400" : ""
+              }`}
+              onClick={() => fileInputRef.current?.click()}
+              onDragEnter={handleDrag}
+              onDragLeave={handleDrag}
+              onDragOver={handleDrag}
+              onDrop={handleDrop}
+            >
+              <img
+                src={preview}
+                alt="Avatar"
+                className="w-full h-full object-cover"
+              />
+
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-secondary-900/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                <div className="text-secondary-100 text-center flex flex-col justify-center items-center gap-1">
+                  <Icon name="pen" />
+                  <p className="text-xs font-semibold">Change</p>
+                </div>
+              </div>
+
+              {/* Drag overlay */}
+              {dragActive && (
+                <div className="absolute inset-0 bg-secondary-900/40 flex items-center justify-center">
+                  <div className="text-secondary-100 text-center flex flex-col justify-center items-center gap-1">
+                    <Icon name="pen" />
+                    <p className="text-xs font-semibold">Drop here</p>
+                  </div>
+                </div>
+              )}
+
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Email */}
+        <div className="flex flex-col mb-10">
+          <label className="mb-2 text-base lg:text-lg font-semibold text-primary-400">
+            Email
+          </label>
           <input
             type="email"
             value={userConnected.email}
             disabled
-            className="w-full border rounded-lg p-3 bg-gray-100 cursor-not-allowed"
+            className="border border-secondary-800 rounded-xl px-3 py-2 text-base lg:text-lg text-secondary-500 focus:outline-none focus:ring-2 focus:ring-primary-400 cursor-not-allowed"
           />
         </div>
 
-        <div className="mb-6">
+        {/* Password */}
+        <div className="flex flex-col mb-2">
+          <label className="mb-2 text-base lg:text-lg font-semibold text-primary-400">
+            Password
+          </label>
           <button
             type="button"
             onClick={() => setShowPasswordForm(!showPasswordForm)}
-            className="w-full flex justify-between items-center px-4 py-3 bg-gray-100 rounded-lg hover:bg-gray-200 transition"
+            className="w-full flex justify-between items-center px-3 py-2 bg-secondary-800 rounded-xl text-base lg:text-lg"
           >
-            <span className="font-semibold text-gray-700">
-              Modifier mon mot de passe
+            <span className="font-semibold text-secondary-100">
+              Change password
             </span>
-
             <span>
               {!showPasswordForm ? (
-                <Icon name="arrowDown" className="text-secondary-900" />
+                <Icon name="arrowDown" className="text-secondary-100" />
               ) : (
-                <Icon name="arrowUp" className="text-secondary-900" />
+                <Icon name="arrowUp" className="text-secondary-100" />
               )}
             </span>
           </button>
-
           {showPasswordForm && (
-            <div className="mt-4 space-y-4 p-4 border rounded-lg bg-gray-50">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Mot de passe actuel
+            <div className="mt-2 p-3 rounded-xl bg-secondary-800">
+              <div className="flex flex-col mb-2">
+                <label className="mb-2 text-base lg:text-lg font-semibold text-secondary-00">
+                  Current Password <span className="text-red-400">*</span>
                 </label>
-
                 <input
                   type="password"
-                  className="w-full border rounded-lg p-3"
+                  placeholder="Enter your current password"
+                  className="border border-secondary-700 rounded-xl px-3 py-2 text-base lg:text-lg text-secondary-200 focus:outline-none focus:ring-2 focus:ring-primary-400"
                   value={currentPassword}
                   onChange={(e) => setCurrentPassword(e.target.value)}
                 />
               </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Nouveau mot de passe
+              <div className="flex flex-col mb-2">
+                <label className="mb-2 text-base lg:text-lg font-semibold">
+                  New password <span className="text-red-400">*</span>
                 </label>
-
                 <input
                   type="password"
-                  className="w-full border rounded-lg p-3"
+                  placeholder="Enter your new password"
+                  className="border border-secondary-700 rounded-xl px-3 py-2 text-base lg:text-lg text-secondary-200 focus:outline-none focus:ring-2 focus:ring-primary-400"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
                 />
               </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Confirmation du nouveau mot de passe
+              <div className="flex flex-col mb-2">
+                <label className="mb-2 text-base lg:text-lg font-semibold">
+                  Confirm new password <span className="text-red-400">*</span>
                 </label>
-
                 <input
                   type="password"
-                  className="w-full border rounded-lg p-3"
+                  placeholder="Confirm your new password"
+                  className="border border-secondary-700 rounded-xl px-3 py-2 text-base lg:text-lg text-secondary-200 focus:outline-none focus:ring-2 focus:ring-primary-400"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
               </div>
-
-              {passwordError && <p className="text-red-600">{passwordError}</p>}
+              {passwordError && (
+                <p className="text-red-400 text-base lg:text-lg mt-1">
+                  {passwordError}
+                </p>
+              )}
             </div>
           )}
         </div>
 
-        {error && <p className="text-red-600 mb-2">{error}</p>}
+        {error && (
+          <p className="text-red-400 text-base lg:text-lg mt-1">{error}</p>
+        )}
+        {success && (
+          <p className="text-green-400 text-base lg:text-lg mt-1">{success}</p>
+        )}
 
-        {success && <p className="text-green-600 mb-2">{success}</p>}
-
-        <button
-          type="button"
-          disabled={!canSubmit}
-          className={` text-white px-6 py-2 rounded-lg  ${
-            canSubmit
-              ? "bg-blue-500 hover:bg-blue-600"
-              : "bg-gray-300 cursor-not-allowed"
-          }`}
+        <Button
+          colorVariant="btnPrimaryYellow"
+          text={loading ? "Saving..." : "Save changes"}
+          type="submit"
           onClick={submit}
-        >
-          {loading ? "En cours ..." : "Enregistrer les modifications"}
-        </button>
-
-        <div className="mt-8">
-          <h2 className="text-xl font-bold mb-4">Mes séries notées</h2>
-
-          <p className="text-gray-500">Aucune série notée pour l’instant.</p>
-        </div>
+        />
       </div>
     </div>
   );

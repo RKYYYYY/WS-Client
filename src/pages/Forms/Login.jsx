@@ -62,7 +62,7 @@ export default function Login() {
         Log to my account
       </h1>
       <form
-        className="flex flex-col gap-2 mb-6 mx-auto w-full min-w-0 sm:min-w-[400px] md:min-w-[500px] lg:min-w-[600px] border border-secondary-700 rounded-[16px] py-3 sm:py-7 px-3 sm:px-7"
+        className="flex flex-col gap-2 mb-6 mx-auto w-full min-w-0 sm:min-w-[400px] md:min-w-[500px] lg:min-w-[600px] border border-secondary-700 rounded-2xl py-3 sm:py-7 px-3 sm:px-7"
         onSubmit={handleSubmit(submit)}
       >
         <div className="flex flex-col mb-2">
