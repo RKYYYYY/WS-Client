@@ -11,7 +11,7 @@ export async function signUp(values) {
         "Content-Type": "application/json", // indique au serveur que le contenu envoyé est en js
       },
     });
-    const newUserMessage = await response.json(); // converit la reponse serveur json en obj js
+    const newUserMessage = await response.json(); // convertit la reponse serveur json en obj js
     return newUserMessage; //retourne la rép pour l'utiliser ailleurs
   } catch (error) {
     console.log(error);

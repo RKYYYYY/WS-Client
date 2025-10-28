@@ -95,7 +95,7 @@ export default function ProfileSettings() {
 
   const submit = async () => {
     if (!canSubmit) {
-      toast.error("No change saved");
+      toast.error("No change to save");
       return;
     }
 
@@ -104,6 +104,7 @@ export default function ProfileSettings() {
       return;
     }
 
+    const toastId = toast.loading("Updating profile...");
     setLoading(true);
     try {
       let avatarUrl;
@@ -126,17 +127,17 @@ export default function ProfileSettings() {
       const updatedUser = await updateUserProfile(payload);
 
       if (!updatedUser.message) {
-        toast.success("Profile updated");
+        toast.success("Profile updated", { id: toastId });
         setCurrentPassword("");
         setNewPassword("");
         setConfirmPassword("");
         setShowPasswordForm(false);
       } else {
-        toast.error(updatedUser.message);
+        toast.error(updatedUser.message, { id: toastId });
       }
-    } catch (error) {
-      console.log(error);
-      toast.error("An error occurred while update profile");
+    } catch (err) {
+      console.log(err);
+      toast.error("An error occurred while update profile", { id: toastId });
     } finally {
       setLoading(false);
     }
