@@ -1,12 +1,15 @@
 import Button from "../../components/Common/Button";
 import HomeCard from "../../components/Common/HomeCard";
+import SavedImg from "../../assets/images/Saved.webp";
+import ProfileImg from "../../assets/images/Profile.webp";
+import SetupImg from "../../assets/images/Setup.webp";
 
 export default function Homepage() {
   return (
     <div className="flex flex-col mx-4">
       <div className="mb-20">
         <h1 className="font-schibsted-grotesk text-secondary-100 font-extrabold text-3xl mt-10 mb-10 text-center">
-          You are <span className="text-red-400">bad</span>? You want to
+          You are <span className="text-red-400">bad</span> ? You want to
           progress
           <span className="text-green-400"> successful</span> in your
           Counter-Strike games ?
@@ -30,9 +33,21 @@ export default function Homepage() {
           Why WrongSettings is useful ?
         </h2>
         <div className="flex flex-col md:grid md:grid-cols-3 gap-4">
-          <HomeCard placeholder="Find the best configuration among the community." />
-          <HomeCard placeholder="Share your settings and save the one you like to remember it." />
-          <HomeCard placeholder="Use it as a backup if you want to try some new settings." />
+          <HomeCard
+            placeholder="Find the best configuration among the community."
+            src={SavedImg}
+            alt="Screenshot showing saved settings page"
+          />
+          <HomeCard
+            placeholder="Share your settings and save the one you like to remember it."
+            src={ProfileImg}
+            alt="Screenshot showing profile page"
+          />
+          <HomeCard
+            placeholder="Fast and easy to setup in game with the console. "
+            src={SetupImg}
+            alt="Screenshot showing ..."
+          />
         </div>
       </div>
       <div>

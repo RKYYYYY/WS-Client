@@ -1,15 +1,19 @@
 import { NavLink } from "react-router-dom"; // component de react router pour la navigation
 import { useAuth } from "../../context/AuthContext"; // hook pour accéder au contexte d'authentification
+import Icon from "../../components/Common/Icon";
 
 export default function Header() {
-  const { userConnected, logout } = useAuth(); // destructure depuis le contexte : userConnected : boolean (true si connecté); logout : func pour déco l'user
+  const { userConnected, logout } = useAuth(); // destructure depuis le contexte : userConnected : boolean (true si connecté); logout : function pour déco l'user
 
   return (
     <header className="bg-secondary-900 shadow-md p-4 flex flex-row justify-between items-center min-w-screen">
       <NavLink to="/">
-        <span className="text-xl font-bold text-primary-400">
-          WrongSettings
-        </span>
+        <div className="flex flex-row gap-2">
+          <Icon name="logo" size={32} className="text-primary-400" />
+          <span className="text-2xl font-bold text-secondary-50">
+            WrongSettings
+          </span>
+        </div>
       </NavLink>
       <nav className="flex space-x-6">
         {userConnected ? ( // si l'user est connecté ça affiche

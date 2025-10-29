@@ -16,6 +16,7 @@ import ArrowDown from "../../assets/svgs/arrow_down";
 import ArrowLeft from "../../assets/svgs/arrow_left";
 import ArrowRight from "../../assets/svgs/arrow_right";
 import Pen from "../../assets/svgs/pen";
+import logoWS from "../../assets/svgs/logoWS";
 
 const iconRegistry = {
   bookmark: Bookmark,
@@ -36,6 +37,7 @@ const iconRegistry = {
   arrowLeft: ArrowLeft,
   arrowRight: ArrowRight,
   pen: Pen,
+  logo: logoWS,
 };
 
 export default function Icon({
