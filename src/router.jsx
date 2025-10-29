@@ -10,6 +10,7 @@ import { rootLoader } from "./loaders/rootLoader";
 import UserNotConnected from "./components/ProtectedRoutes/UserNotConnected";
 import UserConnected from "./components/ProtectedRoutes/UserConnected";
 import ProfileSettings from "./pages/Profile/ProfileSettings";
+import Profile from "./pages/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +34,14 @@ export const router = createBrowserRouter([
       {
         path: "/discover",
         element: <Discover />,
+      },
+      {
+        path: "/profile",
+        element: (
+          <UserConnected>
+            <Profile />
+          </UserConnected>
+        ),
       },
       {
         path: "/register",

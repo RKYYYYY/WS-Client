@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { getUsers } from "../api/users.api";
 import ProfileCard from "../components/Common/ProfileCard";
 import Icon from "../components/Common/Icon";
 import InputList from "../components/Common/InputList";
