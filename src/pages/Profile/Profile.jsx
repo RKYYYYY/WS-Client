@@ -1,6 +1,7 @@
 import { useAuth } from "../../context/AuthContext";
 
 import Icon from "../../components/Common/Icon";
+import Button from "../../components/Common/Button";
 import SectionTitle from "../../components/Common/SectionsTitle";
 import InputText from "../../components/Common/InputText";
 import InputList from "../../components/Common/InputList";
