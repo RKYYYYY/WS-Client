@@ -1,7 +1,6 @@
 import { useAuth } from "../../context/AuthContext";
 
 import Icon from "../../components/Common/Icon";
-import Button from "../../components/Common/Button";
 import SectionTitle from "../../components/Common/SectionsTitle";
 import InputText from "../../components/Common/InputText";
 import InputList from "../../components/Common/InputList";
@@ -37,11 +36,20 @@ export default function Profile() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <InputText title="DPI" placeholder="Enter your option" />
           <InputText title="Polling Rate" placeholder="Enter your option" />
-          <InputText title="Sensitivity" placeholder="Enter your option" />
-          <InputText title="Zoom sensitivity" placeholder="Enter your option" />
+          <InputText
+            title="Sensitivity"
+            placeholder="Enter your option"
+            helperText="Value from .. to .."
+          />
+          <InputText
+            title="Zoom sensitivity"
+            placeholder="Enter your option"
+            helperText="Value from 0.1 to 3"
+          />
           <InputText
             title="Windows Sensitivity"
             placeholder="Enter your option"
+            helperText="Value from 0 to 20"
           />
         </div>
       </div>
@@ -70,14 +78,46 @@ export default function Profile() {
             placeholder="Select an option"
             options={["Yes", "No"]}
           />
-          <InputText title="Length" placeholder="Enter your option" />
-          <InputText title="Thickness" placeholder="Enter your option" />
-          <InputText title="Gap" placeholder="Enter your option" />
-          <InputText title="Outline" placeholder="Enter your option" />
-          <InputText title="Red" placeholder="Enter your option" />
-          <InputText title="Green" placeholder="Enter your option" />
-          <InputText title="Blue" placeholder="Enter your option" />
-          <InputText title="Alpha" placeholder="Enter your option" />
+          <InputText
+            title="Length"
+            placeholder="Enter your option"
+            helperText="From 0 to 10"
+          />
+          <InputText
+            title="Thickness"
+            placeholder="Enter your option"
+            helperText="From 0.1 to 6"
+          />
+          <InputText
+            title="Gap"
+            placeholder="Enter your option"
+            helperText="From -5 to 5"
+          />
+          <InputText
+            title="Outline"
+            placeholder="Enter your option"
+            helperText="Form 0 to 3"
+          />
+          <InputText
+            title="Red"
+            placeholder="Enter your option"
+            helperText="From 0 to 255"
+          />
+          <InputText
+            title="Green"
+            placeholder="Enter your option"
+            helperText="From 0 to 255"
+          />
+          <InputText
+            title="Blue"
+            placeholder="Enter your option"
+            helperText="From 0 et 255"
+          />
+          <InputText
+            title="Alpha"
+            placeholder="Enter your option"
+            helperText="From 0 to 255"
+          />
           <InputList
             title="T-Style"
             placeholder="Select an option"
@@ -118,7 +158,11 @@ export default function Profile() {
           />
           <InputText title="Resolution" placeholder="Enter your option" />
           <InputText title="Refresh Rate" placeholder="Enter your option" />
-          <InputText title="Luminosity" placeholder="Enter your option" />
+          <InputText
+            title="Luminosity"
+            placeholder="Enter your option"
+            helperText="Value from 33% to 133%"
+          />
         </div>
       </div>
 
@@ -206,7 +250,11 @@ export default function Profile() {
       <div>
         <SectionTitle icon="dashboard" placeholder="HUD" />
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
-          <InputText title="HUD Scale" placeholder="Enter your option" />
+          <InputText
+            title="HUD Scale"
+            placeholder="Enter your option"
+            helperText="Value from 0.9 to 1.11"
+          />
           <InputList
             title="HUD Color"
             placeholder="Select an option"
@@ -243,12 +291,25 @@ export default function Profile() {
             placeholder="Select an option"
             options={["Yes", "No"]}
           />
-          <InputText title="Radar Opacity" placeholder="Enter your option" />
-          <InputText title="HUD Size" placeholder="Enter your option" />
-          <InputText title="Map Zoom" placeholder="Enter your option" />
+          <InputText
+            title="Radar Opacity"
+            placeholder="Enter your option"
+            helperText="Value from 0 to 1"
+          />
+          <InputText
+            title="HUD Size"
+            placeholder="Enter your option"
+            helperText="Value from 0.8 to 1.3"
+          />
+          <InputText
+            title="Map Zoom"
+            placeholder="Enter your option"
+            helperText="Value from 0.25 to 1"
+          />
           <InputText
             title="Map Alternate Zoom"
             placeholder="Enter your option"
+            helperText="Value from 0.25 to 1"
           />
           <InputList
             title="Dynamic Zoom"

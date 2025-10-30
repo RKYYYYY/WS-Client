@@ -6,6 +6,7 @@ export default function SelectInputComponent({
   value,
   onChange,
   placeholder = "Sélectionnez une option",
+  helperText,
 }) {
   // initialiser avec la première option si elle est dispo
   const getInitialValue = () => {
@@ -48,6 +49,13 @@ export default function SelectInputComponent({
           </option>
         ))}
       </select>
+      <div className="h-5 max-w-60 w-full">
+        {helperText && (
+          <p className="text-secondary-400 text-sm font-semibold">
+            {helperText}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
