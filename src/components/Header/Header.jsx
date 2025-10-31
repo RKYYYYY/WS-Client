@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header className="bg-secondary-900 shadow-md p-4 relative z-50">
       <div className="flex flex-row justify-between items-center">
-        {/* Logo - texte caché en mobile */}
+        {/* Logo gauche */}
         <NavLink to="/" onClick={closeMenu} className="relative z-[60]">
           <div className="flex flex-row gap-2 items-center">
             <Icon name="logo" size={32} className="text-primary-400" />
@@ -36,7 +36,7 @@ export default function Header() {
           </div>
         </NavLink>
 
-        {/* Navigation center - Discover link centré sur desktop */}
+        {/* Nav centré */}
         <nav className="hidden lg:flex items-center absolute left-1/2 transform -translate-x-1/2">
           <NavLink
             to="/discover"
@@ -46,7 +46,7 @@ export default function Header() {
           </NavLink>
         </nav>
 
-        {/* Navigation desktop right - cachée sur mobile/tablette */}
+        {/* Navi cachée sur mobile/tablette */}
         <nav className="hidden lg:flex items-center space-x-6">
           {userConnected ? (
             <>
@@ -90,7 +90,7 @@ export default function Header() {
           )}
         </nav>
 
-        {/* Bouton burger - visible uniquement sur mobile/tablette - z-index élevé */}
+        {/* Bouton menu burger */}
         <button
           onClick={toggleMenu}
           className="lg:hidden flex flex-col justify-center items-center w-10 h-10 space-y-1.5 relative z-[60]"
@@ -114,7 +114,7 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Overlay pour fermer le menu en cliquant à côté */}
+      {/* Pour fermer le panneau en cliquant dehors */}
       {isMenuOpen && (
         <div
           onClick={closeMenu}
@@ -134,28 +134,28 @@ export default function Header() {
               <NavLink
                 to="/discover"
                 onClick={closeMenu}
-                className="text-secondary-100 hover:text-primary-400 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
                 Discover
               </NavLink>
               <NavLink
                 to="/profile"
                 onClick={closeMenu}
-                className="text-secondary-100 hover:text-primary-400 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
                 My profile
               </NavLink>
               <NavLink
                 to="/profile-settings"
                 onClick={closeMenu}
-                className="text-secondary-100 hover:text-primary-400 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
                 Profile Settings
               </NavLink>
               <NavLink
                 to="/saved"
                 onClick={closeMenu}
-                className="text-secondary-100 hover:text-primary-400 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
                 Saved Settings
               </NavLink>
@@ -173,7 +173,7 @@ export default function Header() {
               <NavLink
                 to="/discover"
                 onClick={closeMenu}
-                className="text-secondary-100 hover:text-primary-400 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+                className="text-secondary-100 hover:secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
                 Discover
               </NavLink>
