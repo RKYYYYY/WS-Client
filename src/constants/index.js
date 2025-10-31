@@ -10,7 +10,7 @@ export const variants = {
   btnSecondaryYellow:
     "bg-primary-500/25 text-primary-400 px-4 py-2 sm:py-3 rounded-xl hover:bg-primary-400 hover:text-primary-900 text-base sm:text-lg font-medium ease-custom duration-300 text-center ease-custom no-underline inline-block",
   btnSecondaryBlue:
-    "bg-blue-500/25 text-blue-400 px-4 py-2 sm:py-3 rounded-xl hover:bg-blue-400 hover:text-blue-900 text-base sm:text-base font-medium ease-custom duration-300 text-center ease-custom no-underline inline-block",
+    "bg-blue-500/25 text-blue-400 px-4 py-2 sm:py-3 rounded-xl hover:bg-blue-400 hover:text-blue-900 text-base sm:text-lg font-medium ease-custom duration-300 text-center ease-custom no-underline inline-block",
   btnSecondaryRed:
     "bg-red-500/25 text-red-400 px-4 py-2 sm:py-3 rounded-xl hover:bg-red-400 hover:text-red-900 text-base sm:text-lg font-medium ease-custom duration-300 text-center ease-custom no-underline inline-block",
   btnSecondaryGreen:

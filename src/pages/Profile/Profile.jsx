@@ -1,9 +1,10 @@
 import { useAuth } from "../../context/AuthContext";
 
-import Icon from "../../components/Common/Icon";
+import Button from "../../components/Common/Button";
 import SectionTitle from "../../components/Common/SectionsTitle";
 import InputText from "../../components/Common/InputText";
 import InputList from "../../components/Common/InputList";
+import defaultAvatar from "../../assets/images/defaultAvatar.webp";
 
 export default function Profile() {
   const { userConnected } = useAuth();
@@ -21,13 +22,53 @@ export default function Profile() {
               className="w-full h-full object-cover"
             />
           ) : (
-            <Icon name="placeholder" size={64} className="text-primary-400" />
+            <img src={defaultAvatar} alt="Default avatar" />
           )}
         </div>
         {/* Username */}
         <h1 className="font-schibsted-grotesk text-secondary-100 font-extrabold text-3xl mb-4">
           {userConnected?.username || "Username"}
         </h1>
+      </div>
+
+      {/* Buttons change et share */}
+      <div className="flex gap-4 justify-center">
+        <Button
+          colorVariant="btnSecondaryBlue"
+          text="Change my settings"
+          className="w-50"
+          onClick={() => {
+            console.log("Discard changes"); //ajouter la logique
+          }}
+        />
+        <Button
+          colorVariant="btnPrimaryBlue"
+          text="Share my profile"
+          className="w-50"
+          onClick={() => {
+            console.log("Save changes"); //ajouter la logique
+          }}
+        />
+      </div>
+
+      {/* Buttons annuler et save */}
+      <div className="flex gap-4 justify-center">
+        <Button
+          colorVariant="btnSecondaryRed"
+          text="Discard changes"
+          className="w-50"
+          onClick={() => {
+            console.log("Discard changes"); //ajouter la logique
+          }}
+        />
+        <Button
+          colorVariant="btnSecondaryGreen"
+          text="Save changes"
+          className="w-50"
+          onClick={() => {
+            console.log("Save changes"); //ajouter la logique
+          }}
+        />
       </div>
 
       {/* Section Mouse */}
