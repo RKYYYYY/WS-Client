@@ -16,6 +16,7 @@ export const generateMouseCommands = (formData) => {
 };
 
 // commandes pour le viewmodel
+
 export const generateViewmodelCommands = (formData) => {
   const commands = [];
 
@@ -45,6 +46,5 @@ export const generateViewmodelCommands = (formData) => {
     }
     commands.push(`cl_righthand ${handValue}`);
   }
-
   return commands.length > 0 ? commands.join("; ") : "No settings configured.";
 };
