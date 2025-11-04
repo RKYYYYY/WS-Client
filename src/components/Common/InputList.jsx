@@ -26,7 +26,9 @@ export default function SelectInputComponent({
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <h5 className="text-secondary-200 font-bold text-lg">{title}</h5>
+      <h5 className="text-secondary-200 font-bold text-base sm:text-lg text-center">
+        {title}
+      </h5>
 
       <select
         value={localValue}

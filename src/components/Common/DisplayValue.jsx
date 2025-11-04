@@ -23,7 +23,9 @@ export default function DisplayValue({
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <h5 className="text-secondary-200 font-bold text-lg">{title}</h5>
+      <h5 className="text-secondary-200 font-bold text-base sm:text-lg text-center">
+        {title}
+      </h5>
       <p className="text-secondary-100 text-base lg:text-lg">
         {displayValue()}
       </p>

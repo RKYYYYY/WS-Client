@@ -30,7 +30,9 @@ export default function InputText({
 
   return (
     <div className="flex flex-col items-center gap-2">
-      <h5 className="text-secondary-200 font-bold text-lg">{title}</h5>
+      <h5 className="text-secondary-200 font-bold text-base sm:text-lg text-center">
+        {title}
+      </h5>
       <input
         type={type}
         value={localValue}
