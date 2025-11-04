@@ -81,7 +81,7 @@ export const generateRadarCommands = (formData) => {
     } else if (formData.handPosition === "No") {
       CenterValue = 0;
     }
-    commands.push(`cl_righthand ${CenterValue}`);
+    commands.push(`cl_radar_always_centered ${CenterValue}`);
   }
   // radar rotate
   if (formData.radarRotating !== null && formData.radarRotating !== "") {
@@ -91,7 +91,7 @@ export const generateRadarCommands = (formData) => {
     } else if (formData.handPosition === "No") {
       RotateValue = 0;
     }
-    commands.push(`cl_righthand ${RotateValue}`);
+    commands.push(`cl_radar_rotate ${RotateValue}`);
   }
 
   return commands.length > 0 ? commands.join("; ") : "No settings configured.";
