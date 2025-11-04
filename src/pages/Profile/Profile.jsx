@@ -4,6 +4,9 @@ import { getGameSettings, updateGameSettings } from "../../api/auth.api";
 import {
   generateMouseCommands,
   generateViewmodelCommands,
+  generateDisplayCommands,
+  generateHudCommands,
+  generateRadarCommands,
 } from "../../utils/cs2Commands";
 
 import toast from "react-hot-toast";
@@ -612,6 +615,9 @@ export default function Profile() {
       {/* Section Display */}
       <div>
         <SectionTitle icon="desktopWindows" placeholder="Display Settings" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateDisplayCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           {isEditing ? (
             <>
@@ -823,6 +829,9 @@ export default function Profile() {
       {/* Section HUD */}
       <div>
         <SectionTitle icon="dashboard" placeholder="HUD" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateHudCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           {isEditing ? (
             <>
@@ -869,6 +878,9 @@ export default function Profile() {
       {/* Section Radar */}
       <div>
         <SectionTitle icon="explore" placeholder="Radar" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateRadarCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           {isEditing ? (
             <>

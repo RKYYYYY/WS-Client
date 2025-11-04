@@ -1,8 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getUserGameSettings } from "../../api/auth.api";
-import toast from "react-hot-toast";
+import {
+  generateMouseCommands,
+  generateViewmodelCommands,
+  generateDisplayCommands,
+  generateHudCommands,
+  generateRadarCommands,
+} from "../../utils/cs2Commands";
 
+import toast from "react-hot-toast";
 import SectionTitle from "../../components/Common/SectionsTitle";
 import DisplayValue from "../../components/Common/DisplayValue";
 import Button from "../../components/Common/Button";
@@ -105,6 +112,9 @@ export default function UserProfile() {
       {/* Section Mouse */}
       <div>
         <SectionTitle icon="mouse" placeholder="Mouse Settings" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateMouseCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <DisplayValue title="DPI" value={formData.dpi} />
           <DisplayValue
@@ -153,6 +163,9 @@ export default function UserProfile() {
       {/* Section Viewmodel */}
       <div>
         <SectionTitle icon="eye" placeholder="Viewmodel" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateViewmodelCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <DisplayValue title="FOV" value={formData.fov} />
           <DisplayValue title="Offset X" value={formData.offsetX} />
@@ -165,6 +178,9 @@ export default function UserProfile() {
       {/* Section Display */}
       <div>
         <SectionTitle icon="desktopWindows" placeholder="Display Settings" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateDisplayCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <DisplayValue title="Display Mode" value={formData.displayMode} />
           <DisplayValue title="Aspect Ratio" value={formData.aspectRatio} />
@@ -222,6 +238,9 @@ export default function UserProfile() {
       {/* Section HUD */}
       <div>
         <SectionTitle icon="dashboard" placeholder="HUD" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateHudCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <DisplayValue title="HUD Scale" value={formData.hudScale} />
           <DisplayValue title="HUD Color" value={formData.hudColor} />
@@ -231,6 +250,9 @@ export default function UserProfile() {
       {/* Section Radar */}
       <div>
         <SectionTitle icon="explore" placeholder="Radar" />
+        <div className="mx-4 mt-6">
+          <CommandCopy commands={generateRadarCommands(formData)} />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <DisplayValue
             title="Player Centered"

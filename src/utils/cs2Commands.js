@@ -16,7 +16,6 @@ export const generateMouseCommands = (formData) => {
 };
 
 // commandes pour le viewmodel
-
 export const generateViewmodelCommands = (formData) => {
   const commands = [];
 
@@ -46,5 +45,54 @@ export const generateViewmodelCommands = (formData) => {
     }
     commands.push(`cl_righthand ${handValue}`);
   }
+  return commands.length > 0 ? commands.join("; ") : "No settings configured.";
+};
+
+// commandes pour le display
+export const generateDisplayCommands = (formData) => {
+  const commands = [];
+
+  // luminosity
+  if (formData.luminosity !== null && formData.luminosity !== "") {
+    commands.push(`luminosity ${formData.luminosity}`);
+  }
+  return commands.length > 0 ? commands.join("; ") : "No settings configured.";
+};
+
+// commandes pour l'hud
+export const generateHudCommands = (formData) => {
+  const commands = [];
+
+  // hud scale
+  if (formData.hudScale !== null && formData.hudScale !== "") {
+    commands.push(`hud_scaling ${formData.hudScale}`);
+  }
+  return commands.length > 0 ? commands.join("; ") : "No settings configured.";
+};
+
+export const generateRadarCommands = (formData) => {
+  const commands = [];
+
+  // player centered
+  if (formData.playerCentered !== null && formData.playerCentered !== "") {
+    let CenterValue;
+    if (formData.playerCentered === "Yes") {
+      CenterValue = 1;
+    } else if (formData.handPosition === "No") {
+      CenterValue = 0;
+    }
+    commands.push(`cl_righthand ${CenterValue}`);
+  }
+  // radar rotate
+  if (formData.radarRotating !== null && formData.radarRotating !== "") {
+    let RotateValue;
+    if (formData.radarRotating === "Yes") {
+      RotateValue = 1;
+    } else if (formData.handPosition === "No") {
+      RotateValue = 0;
+    }
+    commands.push(`cl_righthand ${RotateValue}`);
+  }
+
   return commands.length > 0 ? commands.join("; ") : "No settings configured.";
 };
