@@ -24,7 +24,7 @@ export default function Header() {
   };
 
   return (
-    <header className="bg-secondary-900 shadow-md p-4 relative z-50">
+    <header className="bg-secondary-900 shadow-md p-4 sticky top-0 z-50 border-b-1 border-secondary-700">
       <div className="flex flex-row justify-between items-center">
         {/* Logo gauche */}
         <NavLink to="/" onClick={closeMenu} className="relative z-[60]">
@@ -37,13 +37,27 @@ export default function Header() {
         </NavLink>
 
         {/* Nav centré */}
-        <nav className="hidden lg:flex items-center absolute left-1/2 transform -translate-x-1/2">
+        <nav className="hidden lg:flex items-center absolute left-1/2 transform -translate-x-1/2 space-x-6">
+          <NavLink
+            to="/"
+            className="text-secondary-100 hover:text-secondary-200 font-semibold transition-colors text-lg"
+          >
+            Home
+          </NavLink>
           <NavLink
             to="/discover"
             className="text-secondary-100 hover:text-secondary-200 font-semibold transition-colors text-lg"
           >
             Discover
           </NavLink>
+          {userConnected && (
+            <NavLink
+              to="/profile"
+              className="text-secondary-100 hover:text-secondary-200 font-semibold transition-colors text-lg"
+            >
+              My profile
+            </NavLink>
+          )}
         </nav>
 
         {/* Navi cachée sur mobile/tablette */}
@@ -51,22 +65,10 @@ export default function Header() {
           {userConnected ? (
             <>
               <NavLink
-                to="/profile"
-                className="text-secondary-100 hover:text-secondary-200 font-semibold transition-colors"
-              >
-                My profile
-              </NavLink>
-              <NavLink
                 to="/profile-settings"
                 className="text-secondary-100 hover:text-secondary-200 font-semibold transition-colors"
               >
-                Profile Settings
-              </NavLink>
-              <NavLink
-                to="/saved"
-                className="text-secondary-100 hover:text-secondary-200 font-semibold transition-colors"
-              >
-                Saved Settings
+                Account Settings
               </NavLink>
               <Button
                 colorVariant="btnPrimaryRed"
@@ -132,6 +134,13 @@ export default function Header() {
           {userConnected ? (
             <>
               <NavLink
+                to="/"
+                onClick={closeMenu}
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+              >
+                Home
+              </NavLink>
+              <NavLink
                 to="/discover"
                 onClick={closeMenu}
                 className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
@@ -150,14 +159,7 @@ export default function Header() {
                 onClick={closeMenu}
                 className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
-                Profile Settings
-              </NavLink>
-              <NavLink
-                to="/saved"
-                onClick={closeMenu}
-                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
-              >
-                Saved Settings
+                Account Settings
               </NavLink>
               <div className="pt-4">
                 <Button
@@ -171,9 +173,16 @@ export default function Header() {
           ) : (
             <>
               <NavLink
+                to="/"
+                onClick={closeMenu}
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+              >
+                Home
+              </NavLink>
+              <NavLink
                 to="/discover"
                 onClick={closeMenu}
-                className="text-secondary-100 hover:secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
+                className="text-secondary-100 hover:text-secondary-200 font-semibold text-lg transition-colors py-2 border-b border-secondary-700"
               >
                 Discover
               </NavLink>

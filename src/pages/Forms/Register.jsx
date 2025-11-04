@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { NavLink, useNavigate, useSearchParams } from "react-router-dom";
 import { signUp } from "../../api/auth.api";
 import { useEffect } from "react";
 
@@ -169,8 +169,14 @@ export default function Register() {
               id="rgpd"
             />
             <span>
-              By submitting this form, I accept the privacy policy and the terms
-              of services.
+              By submitting this form, I accept the and the{" "}
+              <NavLink
+                to="/legal-notice"
+                className="text-blue-400 hover:text-blue-500 transition-colors duration-300"
+              >
+                terms of services
+              </NavLink>
+              .
             </span>
           </label>
           {errors.rgpd && (

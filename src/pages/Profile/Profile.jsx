@@ -277,13 +277,13 @@ export default function Profile() {
             <Button
               colorVariant="btnSecondaryBlue"
               text="Change my settings"
-              className="w-50"
+              className="sm:w-50 w-45"
               onClick={handleChangeSettings}
             />
             <Button
               colorVariant="btnPrimaryBlue"
               text="Share my profile"
-              className="w-50"
+              className="sm:w-50 w-45"
               onClick={handleShareProfile}
             />
           </div>
@@ -292,13 +292,13 @@ export default function Profile() {
             <Button
               colorVariant="btnSecondaryRed"
               text="Discard changes"
-              className="w-50"
+              className="sm:w-50 w-45"
               onClick={handleDiscardChanges}
             />
             <Button
               colorVariant="btnPrimaryGreen"
               text="Save changes"
-              className="w-50"
+              className="sm:w-50 w-45"
               onClick={handleSaveChanges}
             />
           </div>

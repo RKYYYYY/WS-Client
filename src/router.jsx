@@ -1,17 +1,17 @@
 import { createBrowserRouter } from "react-router-dom";
+import { rootLoader } from "./loaders/rootLoader";
 import App from "./App";
 import Homepage from "./pages/Homepage/Homepage";
-import Saved from "./pages/Saved";
 import Discover from "./pages/Discover";
 import Register from "./pages/Forms/Register";
 import Login from "./pages/Forms/Login";
 import ErrorPage from "./pages/ErrorPage";
-import { rootLoader } from "./loaders/rootLoader";
 import UserNotConnected from "./components/ProtectedRoutes/UserNotConnected";
 import UserConnected from "./components/ProtectedRoutes/UserConnected";
 import ProfileSettings from "./pages/Profile/ProfileSettings";
 import Profile from "./pages/Profile/Profile";
 import UserProfile from "./pages/Profile/UserProfile";
+import LegalNotice from "./pages/LegalNotice";
 
 export const router = createBrowserRouter([
   {
@@ -23,14 +23,6 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Homepage />,
-      },
-      {
-        path: "/saved",
-        element: (
-          <UserConnected>
-            <Saved />,
-          </UserConnected>
-        ),
       },
       {
         path: "/discover",
@@ -68,6 +60,10 @@ export const router = createBrowserRouter([
             <ProfileSettings />
           </UserConnected>
         ),
+      },
+      {
+        path: "/legal-notice",
+        element: <LegalNotice />,
       },
     ],
   },
