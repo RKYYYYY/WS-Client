@@ -9,21 +9,21 @@ export default function Homepage() {
     <div className="flex flex-col mx-4 sm:mx-8 md:mx-16 lg:mx-32 xl:mx-40">
       <div className="mb-20 mt-16 sm:mt-20 md:mt-24">
         <h1 className="font-schibsted-grotesk text-secondary-100 font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl mb-20 mt-20 text-center leading-tight">
-          You are <span className="text-red-400">bad</span> ? You want to
-          progress
-          <span className="text-green-400"> successful</span> in your
-          Counter-Strike games ?
+          You are <span className="text-red-400">bad</span> ? You want to be
+          <span className="text-green-400"> successful</span> in your Counter
+          Strike games ?
         </h1>
         <div className="mb-3">
           <h2 className="font-schibsted-grotesk text-secondary-100 font-bold text-xl sm:text-2xl lg:text-3xl mb-4 text-center">
             With WrongSettings, you will finally know if your settings were the
             problem or if it's was you the whole time !
           </h2>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-10 sm:mt-15">
             <Button
               colorVariant="btnPrimaryYellow"
               text="Try it now !"
               to="/register"
+              className="px-10"
             />
           </div>
         </div>

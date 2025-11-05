@@ -1,7 +1,7 @@
 import Icon from "./Icon";
 import Button from "./Button";
 
-export default function ProfileCard({ user, onBookmark, isBookmarked }) {
+export default function ProfileCard({ user }) {
   // ↑ composant card pour afficher les profils utilisateur
 
   const formatTimeAgo = (createdAt) => {
@@ -45,23 +45,12 @@ export default function ProfileCard({ user, onBookmark, isBookmarked }) {
       </div>
 
       {/* Actions */}
-      <div className="flex justify-between items-center mt-4">
-        <button
-          onClick={() => onBookmark(user._id)}
-          className={`p-2 rounded-lg transition-colors duration-300 ease-custom ${
-            isBookmarked
-              ? "bg-primary-500/25 text-primary-400"
-              : "bg-secondary-700 text-secondary-400 hover:bg-secondary-600"
-          }`}
-        >
-          <Icon name="bookmark" size={20} />
-        </button>
-
+      <div className="flex justify-center items-center mt-4">
         <Button
           colorVariant="btnSecondaryYellow"
           text="Full view"
           className="text-sm px-4 py-2"
-          to={`/profile/${user._id}`} // route vers le profil complet
+          to={`/profile/${user._id}`}
         />
       </div>
     </div>

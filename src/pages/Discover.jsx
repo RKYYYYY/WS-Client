@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import ProfileCard from "../components/Common/ProfileCard";
 import Icon from "../components/Common/Icon";
-import InputList from "../components/Common/InputList";
 import { getUsers } from "../api/auth.api";
 
 export default function Discover() {
@@ -9,7 +8,6 @@ export default function Discover() {
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortBy, setSortBy] = useState("recent");
-  const [bookmarkedProfiles, setBookmarkedProfiles] = useState(new Set());
 
   // Récupération des utilisateurs au chargement et lors des changements de filtres
   useEffect(() => {
@@ -20,11 +18,15 @@ export default function Discover() {
     setLoading(true);
     try {
       const response = await getUsers(searchQuery, sortBy);
-      if (response.users) {
+
+      if (response && response.users) {
         setUsers(response.users);
+      } else {
+        setUsers([]);
       }
     } catch (error) {
       console.log("Error fetching users:", error);
+      setUsers([]);
     } finally {
       setLoading(false);
     }
@@ -35,70 +37,49 @@ export default function Discover() {
   };
 
   const handleSortChange = (value) => {
-    // Mapper les valeurs affichées aux valeurs attendues par le backend
+    // mapper les valeurs affichées aux valeurs attendues par le backend
     const sortMapping = {
       "Most recent": "recent",
-      "Most saved": "saved",
       "A - Z": "alphabetical",
     };
     setSortBy(sortMapping[value] || "recent");
   };
 
-  const handleBookmark = (userId) => {
-    setBookmarkedProfiles((prev) => {
-      const newBookmarks = new Set(prev);
-      if (newBookmarks.has(userId)) {
-        newBookmarks.delete(userId);
-      } else {
-        newBookmarks.add(userId);
-      }
-      return newBookmarks;
-    });
-  };
-
   return (
     <div className="flex flex-col mx-4 max-w-7xl w-full">
-      {/* Titre de la section */}
+      {/* titre de la section */}
       <h1 className="font-schibsted-grotesk text-secondary-100 font-extrabold text-3xl mt-10 mb-10 text-center">
         Discover an infinity of profiles
       </h1>
 
-      {/* Sous-titre */}
+      {/* sous titre */}
       <p className="text-secondary-100 text-center mb-8 mx-4">
-        Choose among the most recent or the most saved profiles
+        Choose among the most recent profiles or sort them alphabetically
       </p>
 
-      {/* Barre de recherche et filtres */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-8 mx-4">
-        {/* Barre de recherche */}
-
+      {/* barre de recherche et filtres */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-8 mx-4 items-stretch">
+        {/* barre de recherche */}
         <input
           type="text"
           placeholder="Search profiles by username..."
           value={searchQuery}
           onChange={handleSearch}
-          className="w-full bg-secondary-800 border border-secondary-700 rounded-xl px-4 py-4 text-secondary-100 placeholder-secondary-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
+          className="w-full sm:flex-1 bg-secondary-800 border border-secondary-700 rounded-xl px-4 py-3 text-secondary-100 placeholder-secondary-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent"
         />
 
-        {/* Filtre de tri */}
-        <div className="sm:w-48">
-          <InputList
-            title=""
-            options={["Most recent", "Most saved", "A - Z"]}
-            value={
-              sortBy === "recent"
-                ? "Most recent"
-                : sortBy === "saved"
-                ? "Most saved"
-                : "A - Z"
-            }
-            onChange={handleSortChange}
-            placeholder="Sort by..."
-          />
-        </div>
+        {/* filtre de tri */}
+        <select
+          value={sortBy === "recent" ? "Most recent" : "A - Z"}
+          onChange={(e) => handleSortChange(e.target.value)}
+          className="w-full sm:w-auto sm:min-w-[200px] border border-secondary-700 bg-secondary-800 rounded-xl px-4 py-3 text-secondary-200 text-base focus:outline-none focus:ring-2 focus:ring-primary-400"
+        >
+          <option value="Most recent">Most recent</option>
+          <option value="A - Z">A - Z</option>
+        </select>
       </div>
 
-      {/* Grille des profils */}
+      {/* grille des profils */}
       <div className="mx-4">
         {loading ? (
           <div className="flex justify-center items-center py-20">
@@ -121,18 +102,13 @@ export default function Discover() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {users.map((user) => (
-              <ProfileCard
-                key={user._id}
-                user={user}
-                onBookmark={handleBookmark}
-                isBookmarked={bookmarkedProfiles.has(user._id)}
-              />
+              <ProfileCard key={user._id} user={user} />
             ))}
           </div>
         )}
       </div>
 
-      {/* Message de fin si il y a des résultats */}
+      {/* affiche le nombre de profils chargés */}
       {!loading && users.length > 0 && (
         <div className="text-center py-8">
           <p className="text-secondary-400">
