@@ -11,8 +11,16 @@ export const generateMouseCommands = (formData) => {
   if (formData.zoomSensitivity !== null && formData.zoomSensitivity !== "") {
     commands.push(`zoom_sensitivity_ratio ${formData.zoomSensitivity}`);
   }
-
   return commands.length > 0 ? commands.join("; ") : "No settings configured";
+};
+
+// commandes pour le code crosshair
+export const generateCrosshairCodeCommand = (crosshairCode) => {
+  if (!crosshairCode) {
+    return "No crosshair code configured";
+  }
+
+  return `cl_crosshair_sharecode ${crosshairCode}`;
 };
 
 // commandes pour le viewmodel

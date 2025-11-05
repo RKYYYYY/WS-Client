@@ -7,6 +7,7 @@ import {
   generateDisplayCommands,
   generateHudCommands,
   generateRadarCommands,
+  generateCrosshairCodeCommand,
 } from "../../utils/cs2Commands";
 
 import toast from "react-hot-toast";
@@ -32,6 +33,7 @@ export default function Profile() {
     zoomSensitivity: null,
     windowsSensitivity: null,
     // Crosshair
+    crosshairCode: null,
     crosshairStyle: "Classic",
     friendlyFireWarning: "Always On",
     followRecoil: "No",
@@ -396,6 +398,16 @@ export default function Profile() {
       {/* Section Crosshair */}
       <div>
         <SectionTitle icon="crosshair" placeholder="Crosshair" />
+        <div className="mx-4 mt-6">
+          <CommandCopy
+            commands={formData.crosshairCode || "No crosshair code configured"}
+            isEditing={isEditing}
+            onCommandChange={(value) =>
+              handleInputChange("crosshairCode", value)
+            }
+            placeholder="CSGO-xxxxx-xxxxx-xxxxx-xxxxx-xxxxx"
+          />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           {isEditing ? (
             <>

@@ -13,6 +13,7 @@ import toast from "react-hot-toast";
 import SectionTitle from "../../components/Common/SectionsTitle";
 import DisplayValue from "../../components/Common/DisplayValue";
 import Button from "../../components/Common/Button";
+import CommandCopy from "../../components/Common/CommandCopy";
 import defaultAvatar from "../../assets/images/defaultAvatar.webp";
 
 export default function UserProfile() {
@@ -137,6 +138,11 @@ export default function UserProfile() {
       {/* Section Crosshair */}
       <div>
         <SectionTitle icon="crosshair" placeholder="Crosshair" />
+        <div className="mx-4 mt-6">
+          <CommandCopy
+            commands={formData.crosshairCode || "No crosshair code configured"}
+          />
+        </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8 mt-10">
           <DisplayValue
             title="Crosshair Style"
