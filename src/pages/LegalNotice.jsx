@@ -53,10 +53,6 @@ export default function LegalNotice() {
                 20 rue du Faubourg d'Aval, 62190 Lillers, France
               </li>
               <li>
-                <span className="font-semibold text-secondary-200">Phone:</span>{" "}
-                +33 7 89 83 51 00
-              </li>
-              <li>
                 <span className="font-semibold text-secondary-200">Email:</span>{" "}
                 <a
                   href="mailto:dylanmnr@proton.me"
@@ -66,9 +62,6 @@ export default function LegalNotice() {
                 </a>
               </li>
             </ul>
-            <p className="text-secondary-400 text-sm mt-3">
-              Hereinafter referred to as the "Publisher"
-            </p>
           </div>
         </div>
 

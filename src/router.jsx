@@ -12,6 +12,8 @@ import ProfileSettings from "./pages/Profile/ProfileSettings";
 import Profile from "./pages/Profile/Profile";
 import UserProfile from "./pages/Profile/UserProfile";
 import LegalNotice from "./pages/LegalNotice";
+import TermsOfService from "./pages/TermOfService";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 export const router = createBrowserRouter([
   {
@@ -64,6 +66,14 @@ export const router = createBrowserRouter([
       {
         path: "/legal-notice",
         element: <LegalNotice />,
+      },
+      {
+        path: "/terms-of-service",
+        element: <TermsOfService />,
+      },
+      {
+        path: "/privacy-policy",
+        element: <PrivacyPolicy />,
       },
     ],
   },

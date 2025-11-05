@@ -74,12 +74,26 @@ export default function Footer() {
           <p className="text-secondary-500 text-sm text-center sm:text-left">
             © {currentYear} WrongSettings. All rights reserved.
           </p>
-          <NavLink
-            to="/legal-notice"
-            className="text-secondary-500 hover:text-primary-400 transition-colors duration-300 text-sm"
-          >
-            Legal Notice
-          </NavLink>
+          <div className="flex gap-4">
+            <NavLink
+              to="/legal-notice"
+              className="text-secondary-500 hover:text-primary-400 transition-colors duration-300 text-sm"
+            >
+              Legal Notice
+            </NavLink>
+            <NavLink
+              to="/terms-of-service"
+              className="text-secondary-500 hover:text-primary-400 transition-colors duration-300 text-sm"
+            >
+              Terms of Service
+            </NavLink>
+            <NavLink
+              to="/privacy-policy"
+              className="text-secondary-500 hover:text-primary-400 transition-colors duration-300 text-sm"
+            >
+              Privacy Policy
+            </NavLink>
+          </div>
         </div>
       </div>
     </footer>
