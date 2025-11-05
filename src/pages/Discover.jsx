@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import ProfileCard from "../components/Common/ProfileCard";
 import Icon from "../components/Common/Icon";
 import InputList from "../components/Common/InputList";
+import { getUsers } from "../api/auth.api";
 
 export default function Discover() {
   const [users, setUsers] = useState([]);
@@ -33,8 +34,14 @@ export default function Discover() {
     setSearchQuery(e.target.value);
   };
 
-  const handleSortChange = (e) => {
-    setSortBy(e.target.value);
+  const handleSortChange = (value) => {
+    // Mapper les valeurs affichées aux valeurs attendues par le backend
+    const sortMapping = {
+      "Most recent": "recent",
+      "Most saved": "saved",
+      "A - Z": "alphabetical",
+    };
+    setSortBy(sortMapping[value] || "recent");
   };
 
   const handleBookmark = (userId) => {
@@ -74,8 +81,21 @@ export default function Discover() {
         />
 
         {/* Filtre de tri */}
-        <div className="sm:w-48"></div>
-        <InputList title="" options={["Most recent", "Most saved", "A - Z"]} />
+        <div className="sm:w-48">
+          <InputList
+            title=""
+            options={["Most recent", "Most saved", "A - Z"]}
+            value={
+              sortBy === "recent"
+                ? "Most recent"
+                : sortBy === "saved"
+                ? "Most saved"
+                : "A - Z"
+            }
+            onChange={handleSortChange}
+            placeholder="Sort by..."
+          />
+        </div>
       </div>
 
       {/* Grille des profils */}

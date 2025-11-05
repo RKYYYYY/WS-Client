@@ -18,8 +18,8 @@ export async function signUp(values) {
   }
 }
 
+// function pour la connection
 export async function signIn(values) {
-  // ↑ function pour la connection
   try {
     const response = await fetch(`${BASE_URL}/user/login`, {
       method: "POST",
@@ -127,5 +127,28 @@ export const getUserGameSettings = async (userId) => {
   } catch (error) {
     console.log(error);
     return null;
+  }
+};
+
+// recup tous les utilisateur avec filtres pour page discover
+export const getUsers = async (searchQuery = "", sortBy = "recent") => {
+  try {
+    // Construction de l'URL avec les paramètres de recherche
+    const params = new URLSearchParams();
+    if (searchQuery) params.append("search", searchQuery);
+    if (sortBy) params.append("sort", sortBy);
+
+    const response = await fetch(`${BASE_URL}/user/all?${params.toString()}`, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      return await response.json();
+    } else {
+      return { users: [] };
+    }
+  } catch (error) {
+    console.log(error);
+    return { users: [] };
   }
 };
