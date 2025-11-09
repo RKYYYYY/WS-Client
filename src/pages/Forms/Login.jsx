@@ -2,9 +2,10 @@ import { useForm } from "react-hook-form"; // hook pour gérer les formulaires f
 import * as yup from "yup"; // bibliothèque de validation de schéma
 import { yupResolver } from "@hookform/resolvers/yup"; // intégration de yup avec react-hook-form
 import toast from "react-hot-toast"; // bibliothèque pour afficher des notifications
-import { useNavigate } from "react-router-dom"; // hook pour la navigation programmatique
+import { useNavigate, useSearchParams } from "react-router-dom"; // hook pour la navigation programmatique
 import { useAuth } from "../../context/AuthContext"; // hook personnalisé pour gérer l'authentification
 import { signIn } from "../../api/auth.api";
+import { useEffect } from "react";
 
 // Import des composants réutilisables
 import Button from "../../components/Common/Button"; // composant bouton personnalisé
@@ -12,6 +13,15 @@ import Button from "../../components/Common/Button"; // composant bouton personn
 export default function Login() {
   const navigate = useNavigate(); // initialise la navigation programmatique
   const { login } = useAuth(); // récupère la fonction login du contexte d'authentification
+  const [params] = useSearchParams();
+  const message = params.get("message");
+
+  useEffect(() => {
+    if (message === "password-reset-success") {
+      toast.success("Password reset successfully! You can now log in.");
+      navigate("/login", { replace: true });
+    }
+  }, [message, navigate]);
 
   // Structure initiale des données du formulaire
   const defaultValues = {
@@ -99,6 +109,16 @@ export default function Login() {
             </p>
           )}
         </div>
+        <div className="flex justify-end mb-2">
+          <button
+            type="button"
+            onClick={() => navigate("/forgot-password")}
+            className="text-primary-400 hover:text-primary-500 text-sm font-medium transition-colors duration-300"
+          >
+            Forgot password?
+          </button>
+        </div>
+
         <Button colorVariant="btnPrimaryYellow" text="Login" type="submit" />
       </form>
       <div className="flex flex-col gap-3">

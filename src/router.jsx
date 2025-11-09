@@ -5,6 +5,8 @@ import Homepage from "./pages/Homepage/Homepage";
 import Discover from "./pages/Discover";
 import Register from "./pages/Forms/Register";
 import Login from "./pages/Forms/Login";
+import ForgotPassword from "./pages/Forms/ForgotPassword";
+import ResetPassword from "./pages/Forms/ResetPassword";
 import ErrorPage from "./pages/ErrorPage";
 import UserNotConnected from "./components/ProtectedRoutes/UserNotConnected";
 import UserConnected from "./components/ProtectedRoutes/UserConnected";
@@ -52,6 +54,22 @@ export const router = createBrowserRouter([
         element: (
           <UserNotConnected>
             <Login />
+          </UserNotConnected>
+        ),
+      },
+      {
+        path: "/forgot-password",
+        element: (
+          <UserNotConnected>
+            <ForgotPassword />
+          </UserNotConnected>
+        ),
+      },
+      {
+        path: "/reset-password/:token",
+        element: (
+          <UserNotConnected>
+            <ResetPassword />
           </UserNotConnected>
         ),
       },

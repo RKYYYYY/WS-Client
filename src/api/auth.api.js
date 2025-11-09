@@ -152,3 +152,37 @@ export const getUsers = async (searchQuery = "", sortBy = "recent") => {
     return { users: [] };
   }
 };
+
+// demande de réinitialisation de mot de passe
+export const forgotPassword = async (email) => {
+  try {
+    const response = await fetch(`${BASE_URL}/user/forgot-password`, {
+      method: "POST",
+      body: JSON.stringify({ email }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
+
+// réinitialisation du mot de passe
+export const resetPassword = async (token, password) => {
+  try {
+    const response = await fetch(`${BASE_URL}/user/reset-password/${token}`, {
+      method: "POST",
+      body: JSON.stringify({ password }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return await response.json();
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
