@@ -1,1 +1,6 @@
-export const BASE_URL = "http://localhost:5000"; // l'url de base backend
+// Détecte automatiquement l'environnement
+const isDevelopment = import.meta.env.MODE === "development";
+
+export const BASE_URL = isDevelopment
+  ? "http://localhost:5000"
+  : "https://wrongsettings.onrender.com";
