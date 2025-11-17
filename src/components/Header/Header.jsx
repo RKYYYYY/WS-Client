@@ -164,7 +164,7 @@ export default function Header() {
               <div className="pt-4">
                 <Button
                   colorVariant="btnPrimaryRed"
-                  text="Déconnexion"
+                  text="Disconnect"
                   onClick={handleLogout}
                   className="w-full"
                 />
@@ -189,14 +189,14 @@ export default function Header() {
               <div className="pt-4 space-y-3">
                 <Button
                   colorVariant="btnSecondaryYellow"
-                  text="Connexion"
+                  text="Login"
                   to="/login"
                   onClick={closeMenu}
                   className="w-full"
                 />
                 <Button
                   colorVariant="btnPrimaryYellow"
-                  text="Inscription"
+                  text="Register"
                   to="/register"
                   onClick={closeMenu}
                   className="w-full"
