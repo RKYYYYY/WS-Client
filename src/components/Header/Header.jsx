@@ -72,7 +72,7 @@ export default function Header() {
               </NavLink>
               <Button
                 colorVariant="btnPrimaryRed"
-                text="Déconnexion"
+                text="Disconnect"
                 onClick={handleLogout}
               />
             </>
@@ -80,12 +80,12 @@ export default function Header() {
             <>
               <Button
                 colorVariant="btnSecondaryYellow"
-                text="Connexion"
+                text="Login"
                 to="/login"
               />
               <Button
                 colorVariant="btnPrimaryYellow"
-                text="Inscription"
+                text="Register"
                 to="/register"
               />
             </>
