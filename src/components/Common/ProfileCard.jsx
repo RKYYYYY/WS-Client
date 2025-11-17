@@ -1,8 +1,8 @@
-import Icon from "./Icon";
 import Button from "./Button";
+import defaultAvatar from "../../assets/images/defaultAvatar.webp";
 
 export default function ProfileCard({ user }) {
-  // ↑ composant card pour afficher les profils utilisateur
+  // composant card pour afficher les profils utilisateur
 
   const formatTimeAgo = (createdAt) => {
     const now = new Date();
@@ -24,15 +24,16 @@ export default function ProfileCard({ user }) {
       {/* Avatar et nom */}
       <div className="flex flex-col items-center mb-4">
         <div className="w-16 h-16 rounded-xl bg-primary-500/25 flex items-center justify-center mb-3 overflow-hidden">
-          {user.avatar ? (
-            <img
-              src={user.avatar}
-              alt={user.username}
-              className="w-full h-full object-cover"
-            />
-          ) : (
-            <Icon name="placeholder" size={32} className="text-primary-400" />
-          )}
+          <img
+            src={user.avatar || defaultAvatar}
+            alt={user.username}
+            className="w-full h-full object-cover"
+            onError={(e) => {
+              if (e.target.src !== defaultAvatar) {
+                e.target.src = defaultAvatar;
+              }
+            }}
+          />
         </div>
 
         <h3 className="text-secondary-100 font-schibsted-grotesk font-bold text-lg text-center mb-1">

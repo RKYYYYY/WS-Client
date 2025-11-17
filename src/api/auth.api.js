@@ -1,10 +1,10 @@
 const BASE_URL = import.meta.env.VITE_SERVER_URL; // import de l'url centralisé pour faciliter les changements d'environnement
 
 export async function signUp(values) {
-  // ↑ function pour l'inscription
+  // function pour l'inscription
   try {
     const response = await fetch(`${BASE_URL}/user`, {
-      // ↑ appel vers l'endpoint d'inscription
+      // appel vers l'endpoint d'inscription
       method: "POST", // metohde POST pour créer un nouveau user
       body: JSON.stringify(values), // convertit l'obj js en json
       headers: {
@@ -18,7 +18,6 @@ export async function signUp(values) {
   }
 }
 
-// function pour la connection
 export async function signIn(values) {
   try {
     const response = await fetch(`${BASE_URL}/user/login`, {

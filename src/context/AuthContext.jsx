@@ -5,7 +5,7 @@ import { signOut } from "../api/auth.api";
 const AuthContext = createContext(); // contexte react pour partager l'état d'authentification
 
 export function AuthProvider({ children }) {
-  // ↑ composant provider qui wrap le site pour fournir le context à tous les composants enfants
+  //  composant provider qui wrap le site pour fournir le context à tous les composants enfants
   const initialUser = useLoaderData();
   const [userConnected, setUserConnected] = useState(initialUser); // stocke les infos de l'utilisateur connecté
 

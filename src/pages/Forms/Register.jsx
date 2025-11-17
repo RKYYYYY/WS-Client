@@ -169,7 +169,8 @@ export default function Register() {
               id="rgpd"
             />
             <span>
-              By submitting this form, I accept the and the{" "}
+              By submitting this form, I acknowledge that i read and accepted
+              the and the{" "}
               <NavLink
                 to="/legal-notice"
                 className="text-blue-400 hover:text-blue-500 transition-colors duration-300"
